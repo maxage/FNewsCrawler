@@ -38,7 +38,7 @@ def main():
         # download_thread.daemon = True
         # download_thread.start()
 
-        host_addr = os.getenv("WEB_HOST", "localhost")
+        host_addr = os.getenv("WEB_HOST", "0.0.0.0")
         port = int(os.getenv("WEB_PORT", 8480))
         # 启动配置
         config = {
