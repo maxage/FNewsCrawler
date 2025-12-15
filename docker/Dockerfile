@@ -6,17 +6,12 @@ WORKDIR /app
 # 复制项目文件
 COPY . .
 
-# github action自带翻墙没必要设置
-#RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
-#RUN pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
-
-# 安装项目依赖
-RUN uv  pip  install --system --no-cache-dir -r requirements.txt
+# 使用uv安装项目依赖
+RUN uv sync --frozen --no-dev
 
 # 安装Playwright浏览器
-RUN playwright install chromium && \
-    playwright install-deps chromium || true && \
-    rm -rf /var/lib/apt/lists/* \
+RUN uv run playwright install chromium && \
+    uv run playwright install-deps chromium || true
 
 # 设置环境变量
 ENV PYTHONPATH=/app
@@ -32,8 +27,6 @@ EXPOSE 8480
 # 启动脚本
 COPY docker/start.sh /app/start.sh
 RUN chmod +x /app/start.sh
-# 确保脚本使用Unix行结束符
-RUN sed -i 's/\r$//' /app/start.sh
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \

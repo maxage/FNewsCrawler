@@ -6,7 +6,6 @@ set -e
 
 echo "🚀 启动 FNewsCrawler 服务..."
 
-
 # 启动Redis服务（如果未运行）
 if ! pgrep redis-server > /dev/null; then
     echo "🔧 启动Redis服务..."
@@ -22,11 +21,13 @@ while ! redis-cli ping > /dev/null 2>&1; do
 done
 echo "✅ Redis服务已就绪"
 
-
-# 检查Python环境
-echo "🐍 检查Python环境..."
+# 检查uv和Python环境
+echo "🐍 检查环境..."
 python --version
-pip list | grep -E "(fastapi|playwright|redis|fastmcp)"
+uv --version
+echo "依赖检查："
+uv pip list | grep -E "(fastapi|playwright|redis|fastmcp)" || echo "依赖检查完成"
 
 # 启动主应用
-exec python main.py
+echo "🎯 启动FNewsCrawler主应用..."
+exec uv run python main.py

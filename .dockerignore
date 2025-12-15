@@ -24,6 +24,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# uv缓存
+.uv-cache/
+
 # 虚拟环境
 venv/
 env/
@@ -76,7 +79,6 @@ Dockerfile.dev
 docker-compose.dev.yml
 
 # 文档
-*.md
 docs/
 
 # 测试文件

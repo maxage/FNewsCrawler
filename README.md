@@ -39,7 +39,7 @@ FNewsCrawler
 
 ### 环境要求
 
-- Python 3.8+
+- Python 3.12+
 - Redis 服务器
 - Chrome/Chromium 浏览器
 
@@ -92,8 +92,8 @@ cd FNewsCrawler
 
 2. **安装依赖**
 ```bash
-pip install -r requirements.txt
-playwright install chromium
+uv sync
+uv run playwright install chromium
 ```
 
 3. **配置环境**
@@ -118,7 +118,7 @@ brew services start redis
 5. **启动服务**
 ```bash
 # 启动Web服务
-python main.py
+uv run python main.py
 
 
 ```
