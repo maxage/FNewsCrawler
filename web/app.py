@@ -63,10 +63,10 @@ mcp_app = None
 
 # 创建MCP服务器的ASGI应用
 if os.getenv("MCP_SERVER_TYPE","sse") == "sse":
-    mcp_app = mcp_server.sse_app(path='/mcp-server')
+    mcp_app = mcp_server.http_app(path='/mcp-server', transport='sse')
     LOGGER.info("MCP服务器已配置为SSE模式")
 else:
-    mcp_app = mcp_server.http_app(path='/mcp-server')
+    mcp_app = mcp_server.http_app(path='/mcp-server', transport='http')
     LOGGER.info("MCP服务器已配置为HTTP模式")
 
 # 创建FastAPI应用实例，集成MCP生命周期
