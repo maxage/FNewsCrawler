@@ -34,9 +34,9 @@ def main():
     try:
         LOGGER.info("正在启动FNewsCrawler Web应用...")
         #启动一个后台线程进行下载模型
-        download_thread = threading.Thread(target=download_sentence_transformer_model)
-        download_thread.daemon = True
-        download_thread.start()
+        # download_thread = threading.Thread(target=download_sentence_transformer_model)
+        # download_thread.daemon = True
+        # download_thread.start()
 
         host_addr = os.getenv("WEB_HOST", "localhost")
         port = int(os.getenv("WEB_PORT", 8480))
