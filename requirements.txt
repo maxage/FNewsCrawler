@@ -19,3 +19,10 @@ sentence-transformers
 scikit-learn
 tqdm
 akshare
+pytest-asyncio
+anyio
+pytest-tornasync
+pytest-trio
+pytest-twisted
+twisted
+service_identity

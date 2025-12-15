@@ -9,6 +9,7 @@ import fnewscrawler.mcp.eastmoney
 import fnewscrawler.mcp.indicator
 import fnewscrawler.mcp.tushare
 import fnewscrawler.mcp.akshare
+import fnewscrawler.mcp.wallstreetcn
 
 
 __all__ = [
